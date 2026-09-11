@@ -17,8 +17,6 @@ public class sceneManager : MonoBehaviour
         MainMenu,
         Gameplay_1,
         Gameplay_2,
-
-
     }
 
     //List of Scene Functions.
