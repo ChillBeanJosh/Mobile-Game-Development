@@ -57,7 +57,7 @@ public class CameraSpring : MonoBehaviour
     //Spring Visualization:
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.blue;
+        Gizmos.color = Color.magenta;
         Gizmos.DrawLine(transform.position, _springPosition);
         Gizmos.DrawSphere(_springPosition, 0.1f);
     }

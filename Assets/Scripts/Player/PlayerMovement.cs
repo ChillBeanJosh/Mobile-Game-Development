@@ -125,14 +125,12 @@ public class PlayerMovement : MonoBehaviour
         }
 
         if (_requestedImpulse)
-        {
-            /*
+        {  
             Vector3 impulseDirection = _requestedRotation * Vector3.forward;
             Vector3 impulse = impulseDirection * impulseStrength;
             AddImpulse(impulse);
 
-            _requestedImpulse = false;
-            */
+            _requestedImpulse = false;  
         }
     }
 

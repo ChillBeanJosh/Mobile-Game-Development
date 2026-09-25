@@ -2054,6 +2054,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2676775084484515645, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: slideLeanStrength
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2676775084484515645, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: leanStrengthResponse
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4464091481899766738, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2094,9 +2102,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5827020809346581077, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: frequency
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 5827020809346581077, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: dampingRatio
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7846382053223284263, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8047411933551844768, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: dragCoefficient
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8970093006386432830, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: moveAcceleration
+      value: 300
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
