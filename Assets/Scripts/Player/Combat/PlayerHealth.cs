@@ -5,15 +5,20 @@ public class PlayerHealth : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private PlayerInput playerInput;
+    [Space]
+
 
     [Header("Health")]
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth;
+    [Space]
+
 
     [Header("Damage Protection")]
     [SerializeField] private float invulnerabilityTime = 1f;
     [SerializeField] private float invulnerabilityTimer;
 
+   
     private void Awake()
     {
         currentHealth = maxHealth;
@@ -44,7 +49,6 @@ public class PlayerHealth : MonoBehaviour
     private void OnDie()
     {
         playerInput.ToggleScreenLock();
-
         sceneManager.Instance.LoadGameOver();
     }
 

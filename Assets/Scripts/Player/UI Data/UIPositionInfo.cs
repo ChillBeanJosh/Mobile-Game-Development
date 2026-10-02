@@ -6,6 +6,7 @@ public class UIPositionInfo : MonoBehaviour
     [Header("References: ")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerHealth playerHealth;
+    [SerializeField] private CoinCollector coinCollector;
     [Space]
 
 
@@ -15,10 +16,14 @@ public class UIPositionInfo : MonoBehaviour
     [Header("UI Health Info: ")]
     [SerializeField] private TextMeshProUGUI healthData;
 
+    [Header("UI Score Info: ")]
+    [SerializeField] private TextMeshProUGUI scoreData;
+
     private void Update()
     {
         UpdatePlayerInfo();
         UpdatePlayerHealth();
+        UpdateScore();
     }
 
     private void UpdatePlayerInfo()
@@ -47,6 +52,14 @@ public class UIPositionInfo : MonoBehaviour
         if (playerHealth != null && healthData != null)
         {
             healthData.text = $"<color=red>Player Health: {playerHealth.GetCurrentHealth():F0}</color>\n";
+        }
+    }
+
+    private void UpdateScore()
+    {
+        if (coinCollector != null && scoreData != null)
+        {
+            scoreData.text = $"<color=yellow>Score: {coinCollector.GetCollectedCoins()}</color>\n";
         }
     }
 }
