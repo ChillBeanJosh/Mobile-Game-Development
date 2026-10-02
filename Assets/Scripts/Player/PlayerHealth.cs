@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private PlayerInput playerInput;
+
     [Header("Health")]
     [SerializeField] private int maxHealth = 3;
     [SerializeField] private int currentHealth;
@@ -40,10 +43,9 @@ public class PlayerHealth : MonoBehaviour
 
     private void OnDie()
     {
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        playerInput.ToggleScreenLock();
 
-        sceneManager.Instance.LoadMainMenu();
+        sceneManager.Instance.LoadGameOver();
     }
 
     public int GetCurrentHealth() => currentHealth;

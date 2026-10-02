@@ -16,8 +16,7 @@ public class PlayerInput : MonoBehaviour
 
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        ToggleScreenLock();
 
         _inputActions = new Gameplay();
         _inputActions.Enable();
@@ -76,5 +75,11 @@ public class PlayerInput : MonoBehaviour
         _movementLogic.GatherIntrinsicAccelerations(moveAcceleration);
         _movementLogic.GatherIntrinsicPhysics();
         _movementLogic.ApplyMovement();
+    }
+
+    public void ToggleScreenLock()
+    {
+        Cursor.lockState = (Cursor.lockState == CursorLockMode.Locked) ? CursorLockMode.None : CursorLockMode.Locked;
+        Cursor.visible = !Cursor.visible;
     }
 }

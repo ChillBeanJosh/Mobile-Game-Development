@@ -17,6 +17,7 @@ public class sceneManager : MonoBehaviour
         MainMenu,
         Gameplay_1,
         Gameplay_2,
+        GameOver,
     }
 
     //List of Scene Functions.
@@ -51,6 +52,12 @@ public class sceneManager : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene(Scene.MainMenu.ToString());
+    }
+
+
+    public void LoadGameOver()
+    {
+        SceneManager.LoadScene(Scene.GameOver.ToString());
     }
 
     //Restarts the current Scene.
