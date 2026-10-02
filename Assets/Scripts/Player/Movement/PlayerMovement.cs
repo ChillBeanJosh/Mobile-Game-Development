@@ -1,5 +1,9 @@
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
+using Quaternion = UnityEngine.Quaternion;
+using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public struct CharacterInput
 {
@@ -349,6 +353,11 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform GetCameraTarget() => cameraTarget;
     public Vector3 GetTotalAcceleration() => totalAcceleration;
+    public Vector3 GetCurrentVelocity() => currentVelocity;
+    public Vector3 GetCurrentPosition() => currentPosition;
+
+    public bool GetGroundedStatus() => isGrounded;
+
 
     void OnDrawGizmos()
     {
