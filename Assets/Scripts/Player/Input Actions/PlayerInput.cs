@@ -45,7 +45,7 @@ public class PlayerInput : MonoBehaviour
         {
             Look = input.Look.ReadValue<Vector2>()
         };
-        _cameraLogic.UpdateRotation(cameraInput);
+        //_cameraLogic.UpdateRotation(cameraInput);
 
 
         var characterInput = new CharacterInput
