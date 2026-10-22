@@ -9,12 +9,13 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private PlayerCamera _cameraLogic;
     [SerializeField] private CameraSpring cameraSpring;
     [SerializeField] private CameraLean cameraLean;
+    [SerializeField] private PlayerParry _parryLogic;
     [Space]
 
     [Header("Movement Parameters: ")]
     [SerializeField] private float moveAcceleration = 50.0f;
 
-    void Start()
+    void Start() 
     {
         ToggleScreenLock();
 
@@ -57,6 +58,12 @@ public class PlayerInput : MonoBehaviour
         };
         _movementLogic.UpdateInput(characterInput);
         _movementLogic.UpdateBody(deltaTime);
+
+        var parryInput = new ParryInput
+        {
+            ParryPressed = input.Impulse.WasPressedThisFrame()
+        };
+        _parryLogic.UpdateParry(parryInput);
     }
 
     private void LateUpdate()
@@ -75,6 +82,7 @@ public class PlayerInput : MonoBehaviour
         _movementLogic.GatherIntrinsicAccelerations(moveAcceleration);
         _movementLogic.GatherIntrinsicPhysics();
         _movementLogic.ApplyMovement();
+        _parryLogic.ReadParry();
     }
 
     public void ToggleScreenLock()

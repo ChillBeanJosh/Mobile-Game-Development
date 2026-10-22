@@ -22,7 +22,6 @@ public class UIPositionInfo : MonoBehaviour
     private void Update()
     {
         UpdatePlayerInfo();
-        UpdatePlayerHealth();
         UpdateScore();
     }
 
@@ -44,14 +43,6 @@ public class UIPositionInfo : MonoBehaviour
 
             bool isGrounded = playerMovement.GetGroundedStatus();
             positionData.text += $"<color=white>Player Grounded: {isGrounded}</color>\n";
-        }
-    }
-
-    private void UpdatePlayerHealth()
-    {
-        if (playerHealth != null && healthData != null)
-        {
-            healthData.text = $"<color=red>Player Health: {playerHealth.GetCurrentHealth():F0}</color>\n";
         }
     }
 

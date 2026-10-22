@@ -7,9 +7,6 @@ public class ProjectileDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayerHealth health = other.GetComponentInParent<PlayerHealth>();
-
-        if (health == null) return;
-        health.TakeDamage(damage);
+      
     }
 }

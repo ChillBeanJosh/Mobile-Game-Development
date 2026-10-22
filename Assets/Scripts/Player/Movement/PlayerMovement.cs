@@ -91,6 +91,8 @@ public class PlayerMovement : MonoBehaviour
     private float movementTimer = 0f;
     private float cooldownTimer = 0f;
     private bool isMovementActive = false;
+    private bool hasStartedMoving = false;
+    private bool hasAchievedSpeed = false;
 
     private Quaternion _requestedRotation;
     private Vector3 _requestedMovement;
@@ -140,6 +142,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateInputVisualization();
+
+        if (currentVelocity.magnitude < 0.99f)
+        {
+            currentVelocity = Vector3.zero;
+        }
     }
 
     public void UpdateInput(CharacterInput input)
@@ -244,6 +251,7 @@ public class PlayerMovement : MonoBehaviour
                 isMovementActive = true;
                 movementTimer = movementDuration;
                 cooldownTimer = cooldownTime;
+                hasStartedMoving = true;
             }
 
             _requestedImpulse = false;
@@ -270,7 +278,12 @@ public class PlayerMovement : MonoBehaviour
 
         //Update Velocity Based On Actual Displacement To Fix Numerical Errors:
         if (dt > Epsilon) currentVelocity = resolvedDisplacement / dt;
-        
+
+        if (hasStartedMoving && !hasAchievedSpeed && currentVelocity.magnitude > 0.5f)
+        {
+            hasAchievedSpeed = true;
+        }
+
         //Apply Position Update:
         transform.position = currentPosition;
         UpdateGroundedState();
@@ -284,7 +297,7 @@ public class PlayerMovement : MonoBehaviour
 
         //Player Rotation Update:
         Vector3 facingDirection = currentVelocity;
-        //facingDirection.y = 0;
+        facingDirection.y = 0;
 
         if (facingDirection.sqrMagnitude > Epsilon * Epsilon)
         {
@@ -467,8 +480,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 GetTotalAcceleration() => totalAcceleration;
     public Vector3 GetCurrentVelocity() => currentVelocity;
     public Vector3 GetCurrentPosition() => currentPosition;
-
     public bool GetGroundedStatus() => isGrounded;
+    public bool GetHasStartedMoving() => hasStartedMoving;
+    public bool GetHasAchievedSpeed() => hasAchievedSpeed;
 
     private void UpdateInputVisualization()
     {

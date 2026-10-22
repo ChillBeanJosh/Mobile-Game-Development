@@ -3,47 +3,19 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
-    [Header("References")]
+    [Header("References: ")]
     [SerializeField] private PlayerInput playerInput;
-    [Space]
-
-
-    [Header("Health")]
-    [SerializeField] private int maxHealth = 3;
-    [SerializeField] private int currentHealth;
-    [Space]
-
-
-    [Header("Damage Protection")]
-    [SerializeField] private float invulnerabilityTime = 1f;
-    [SerializeField] private float invulnerabilityTimer;
-
-   
-    private void Awake()
-    {
-        currentHealth = maxHealth;
-        invulnerabilityTimer = 0f;
-    }
+    [SerializeField] private PlayerMovement playerMovement;
 
     private void Update()
     {
-        if (invulnerabilityTimer > 0f)
+        float currentSpeed = playerMovement.GetCurrentVelocity().magnitude;
+        bool hasAchievedSpeed = playerMovement.GetHasAchievedSpeed();
+
+        if (currentSpeed <= 0f && hasAchievedSpeed)
         {
-            invulnerabilityTimer -= Time.deltaTime;
+            OnDie();
         }
-    }
-
-    public void TakeDamage(int damage)  
-    {
-        if (invulnerabilityTimer > 0f) return;
-
-        Debug.Log("Player took " + damage + " damage!");
-        currentHealth -= damage;
-        currentHealth = Mathf.Max(currentHealth, 0);
-
-        invulnerabilityTimer = invulnerabilityTime;
-
-        if (currentHealth == 0) OnDie();
     }
 
     private void OnDie()
@@ -51,7 +23,4 @@ public class PlayerHealth : MonoBehaviour
         playerInput.ToggleScreenLock();
         sceneManager.Instance.LoadGameOver();
     }
-
-    public int GetCurrentHealth() => currentHealth;
-    public int GetMaxHealth() => maxHealth;
 }
