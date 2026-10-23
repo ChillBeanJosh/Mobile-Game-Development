@@ -9,14 +9,24 @@ public class JoystickActivation : MonoBehaviour
     [SerializeField] private OnScreenStick JoystickControl;
     [SerializeField] private Image JoystickImage;
 
+    [Header("Settings: ")]
+    [SerializeField] private float fadeDuration = 0.5f;
+    private float currentFadeTime;
+
     public void Update()
     {
         float currentSpeed = playerMovement.GetCurrentVelocity().magnitude;
 
         if (currentSpeed > 0f)
         {
-            JoystickControl.gameObject.SetActive(false);
-            JoystickImage.enabled = false;
+            //Increment Fade Timer:
+            currentFadeTime += Time.deltaTime;
+
+            if (currentFadeTime >= fadeDuration)
+            {
+                JoystickControl.gameObject.SetActive(false);
+                JoystickImage.enabled = false;
+            };
         }
         else
         {

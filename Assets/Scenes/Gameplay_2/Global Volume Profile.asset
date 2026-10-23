@@ -1,67 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8826664929399310134
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 899c54efeace73346a0a16faa3afe726, type: 3}
-  m_Name: Vignette
-  m_EditorClassIdentifier: 
-  active: 1
-  color:
-    m_OverrideState: 1
-    m_Value: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
-  center:
-    m_OverrideState: 1
-    m_Value: {x: 0.5, y: 0.5}
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.268
-  smoothness:
-    m_OverrideState: 1
-    m_Value: 0.18
-  rounded:
-    m_OverrideState: 1
-    m_Value: 1
---- !u!114 &-7807072208030197005
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
-  m_Name: ChromaticAberration
-  m_EditorClassIdentifier: 
-  active: 1
-  intensity:
-    m_OverrideState: 1
-    m_Value: 0.5
---- !u!114 &11400000
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
-  m_Name: Global Volume Profile
-  m_EditorClassIdentifier: 
-  components:
-  - {fileID: 620066825846032202}
-  - {fileID: -7807072208030197005}
-  - {fileID: 6269690923502051403}
-  - {fileID: -8826664929399310134}
---- !u!114 &620066825846032202
+--- !u!114 &-7118735323553719813
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -79,21 +18,21 @@ MonoBehaviour:
     m_Value: 1
   threshold:
     m_OverrideState: 1
-    m_Value: 0.8
+    m_Value: 0.6
   intensity:
     m_OverrideState: 1
-    m_Value: 0.03
+    m_Value: 0.15
   scatter:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 0.7
   clamp:
-    m_OverrideState: 1
-    m_Value: 65247.3
+    m_OverrideState: 0
+    m_Value: 65472
   tint:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 0, b: 0, a: 1}
+    m_Value: {r: 0, g: 0.3960271, b: 1, a: 1}
   highQualityFiltering:
-    m_OverrideState: 1
+    m_OverrideState: 0
     m_Value: 0
   downscale:
     m_OverrideState: 0
@@ -108,7 +47,7 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &6269690923502051403
+--- !u!114 &-7056235725751116080
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,22 +56,101 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
-  m_Name: ColorAdjustments
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
   m_EditorClassIdentifier: 
   active: 1
-  postExposure:
+  intensity:
+    m_OverrideState: 1
+    m_Value: -0.69
+  xMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 1
+    m_Value: 1
+  center:
+    m_OverrideState: 1
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 1
+    m_Value: 1.04
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Global Volume Profile
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: 6860106843306058721}
+  - {fileID: -7118735323553719813}
+  - {fileID: 9215330897543491825}
+  - {fileID: -7056235725751116080}
+--- !u!114 &6860106843306058721
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd486065ce11414fa40e631affc4900, type: 3}
+  m_Name: ProbeVolumesOptions
+  m_EditorClassIdentifier: 
+  active: 1
+  normalBias:
+    m_OverrideState: 1
+    m_Value: 0.84
+  viewBias:
+    m_OverrideState: 1
+    m_Value: 1.66
+  scaleBiasWithMinProbeDistance:
     m_OverrideState: 1
     m_Value: 0
-  contrast:
+  samplingNoise:
     m_OverrideState: 1
-    m_Value: 100
-  colorFilter:
+    m_Value: 0.47
+  animateSamplingNoise:
     m_OverrideState: 1
-    m_Value: {r: 1, g: 1, b: 1, a: 1}
-  hueShift:
+    m_Value: 1
+  leakReductionMode:
     m_OverrideState: 1
-    m_Value: 0
-  saturation:
+    m_Value: 1
+  minValidDotProductValue:
+    m_OverrideState: 0
+    m_Value: 0.1
+  occlusionOnlyReflectionNormalization:
     m_OverrideState: 1
-    m_Value: 0
+    m_Value: 1
+  intensityMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  skyOcclusionIntensityMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  worldOffset:
+    m_OverrideState: 0
+    m_Value: {x: 0, y: 0, z: 0}
+--- !u!114 &9215330897543491825
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
