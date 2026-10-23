@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Setup: ")]
     [SerializeField] private Transform root;
     [SerializeField] private Transform cameraTarget;
+    [SerializeField] private Transform wideZoomCameraTarget;
     [SerializeField] private Collider playerCollider;
     [Space]
 
@@ -477,6 +478,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public Transform GetCameraTarget() => cameraTarget;
+    public Transform GetWideZoomCameraTarget() => wideZoomCameraTarget;
     public Vector3 GetTotalAcceleration() => totalAcceleration;
     public Vector3 GetCurrentVelocity() => currentVelocity;
     public Vector3 GetCurrentPosition() => currentPosition;

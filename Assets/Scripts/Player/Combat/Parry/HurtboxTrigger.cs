@@ -5,6 +5,8 @@ public class HurtboxTrigger : MonoBehaviour
     [Header("References: ")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private ParticleSystem playerHurtEffect;
+    [SerializeField] private AudioSource audioSource;
+
     [Space]
 
     [Header("Hurtbox Effects:")]
@@ -27,6 +29,11 @@ public class HurtboxTrigger : MonoBehaviour
        { 
            playerHurtEffect.Play();
        }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
+        }
     }
 
     private void ReduceSpeed()

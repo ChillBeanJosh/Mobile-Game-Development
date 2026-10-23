@@ -14,6 +14,7 @@ public class PlayerInput : MonoBehaviour
 
     [Header("Movement Parameters: ")]
     [SerializeField] private float moveAcceleration = 50.0f;
+    [SerializeField] private float CameraSpeedThreshold = 550f;
 
     void Start() 
     {
@@ -70,9 +71,21 @@ public class PlayerInput : MonoBehaviour
     {
         var deltaTime = Time.deltaTime;
         var cameraTarget = _movementLogic.GetCameraTarget();
+        var wideZoomCameraTarget = _movementLogic.GetWideZoomCameraTarget();
 
+        if (_movementLogic.GetCurrentVelocity().magnitude > CameraSpeedThreshold)
+        {
+            _cameraLogic.UpdatePosition(wideZoomCameraTarget);
+            cameraLean.UpdateLeanStrengthValue(0f);
 
-        _cameraLogic.UpdatePosition(_movementLogic.GetCameraTarget());
+        }
+        else
+        {
+            _cameraLogic.UpdatePosition(cameraTarget);
+            cameraLean.UpdateLeanStrengthValue(0.15f);
+        }
+
+        //_cameraLogic.UpdatePosition(_movementLogic.GetCameraTarget());
         cameraSpring.UpdateSpring(deltaTime, cameraTarget.up);
         cameraLean.UpdateLean(deltaTime, true, _movementLogic.GetTotalAcceleration(), cameraTarget.up);
     }

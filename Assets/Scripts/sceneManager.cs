@@ -18,6 +18,7 @@ public class sceneManager : MonoBehaviour
         Gameplay_1,
         Gameplay_2,
         GameOver,
+        ClearLevel,
     }
 
     //List of Scene Functions.
@@ -40,6 +41,10 @@ public class sceneManager : MonoBehaviour
         SceneManager.LoadScene(Scene.Gameplay_2.ToString());
     }
 
+    public void LoadLevelClear()
+    {
+        SceneManager.LoadScene(Scene.ClearLevel.ToString());
+    }
 
     //Loads next Scene in build index.
     public void LoadNextScene()

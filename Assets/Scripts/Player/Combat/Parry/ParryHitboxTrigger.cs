@@ -6,6 +6,8 @@ public class ParryHitboxTrigger : MonoBehaviour
     [SerializeField] private PlayerParry playerParry;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private ParticleSystem parrySuccessEffect;
+    [SerializeField] private AudioSource audioSource;
+
     [Space]
 
     [Header("Parry Success Effects:")]
@@ -34,6 +36,11 @@ public class ParryHitboxTrigger : MonoBehaviour
         if (parrySuccessEffect != null)
         {
             parrySuccessEffect.Play();
+        }
+
+        if (audioSource != null)
+        {
+            audioSource.Play();
         }
     }
 

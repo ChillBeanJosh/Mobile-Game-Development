@@ -52,4 +52,9 @@ public class CameraLean : MonoBehaviour
         //Apply Rotation Axis:
         transform.rotation = Quaternion.AngleAxis(_dampedAcceleration.magnitude * _smoothLeanStrength, leanAxis) * transform.rotation;
     }
+
+    public void UpdateLeanStrengthValue(float newValue)
+    {
+        slideLeanStrength = newValue;
+    }
 }
