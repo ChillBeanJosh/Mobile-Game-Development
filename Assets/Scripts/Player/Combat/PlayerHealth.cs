@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private float speedLevelClearThreshold = 10000f;
+    [Space] 
+    public static int roundCount = 0;
 
     private void Update()
     {
@@ -28,12 +30,14 @@ public class PlayerHealth : MonoBehaviour
     private void OnDie()
     {
         playerInput.ToggleScreenLock();
+        roundCount++;
         sceneManager.Instance.LoadGameOver();
     }
 
     private void OnClear()
     {
         playerInput.ToggleScreenLock();
+        roundCount++;
         sceneManager.Instance.LoadLevelClear();
     }
 }

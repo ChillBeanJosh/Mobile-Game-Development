@@ -232,7 +232,7 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""33b389fd-cff2-41cb-83ac-ff7bad31e98f"",
-                    ""path"": ""<Touchscreen>/primaryTouch/tap"",
+                    ""path"": ""<Touchscreen>/touch*/Press"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

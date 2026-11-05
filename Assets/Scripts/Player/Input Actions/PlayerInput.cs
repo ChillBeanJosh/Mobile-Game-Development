@@ -16,6 +16,9 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private float moveAcceleration = 50.0f;
     [SerializeField] private float CameraSpeedThreshold = 550f;
 
+    [Header("Fixed Camera Position: ")] 
+    [SerializeField] private Vector3 targetedFocusPosition;
+
     void Start() 
     {
         ToggleScreenLock();
@@ -76,6 +79,7 @@ public class PlayerInput : MonoBehaviour
         if (_movementLogic.GetCurrentVelocity().magnitude > CameraSpeedThreshold)
         {
             _cameraLogic.UpdatePosition(wideZoomCameraTarget);
+            _cameraLogic.SetRotation(targetedFocusPosition);
             cameraLean.UpdateLeanStrengthValue(0f);
 
         }
