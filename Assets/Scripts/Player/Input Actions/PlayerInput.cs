@@ -21,7 +21,7 @@ public class PlayerInput : MonoBehaviour
 
     void Start() 
     {
-        ToggleScreenLock();
+        //ToggleScreenLock();
 
         _inputActions = new Gameplay();
         _inputActions.Enable();

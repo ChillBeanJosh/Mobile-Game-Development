@@ -77,14 +77,14 @@ public class PlayerHealth : MonoBehaviour
     private void OnDie()
     {
         SaveRunData();
-        playerInput.ToggleScreenLock();
+        //playerInput.ToggleScreenLock();
         sceneManager.Instance.LoadGameOver();
     }
 
     private void OnClear()
     {
         SaveRunData();
-        playerInput.ToggleScreenLock();
+        //playerInput.ToggleScreenLock();
         sceneManager.Instance.LoadLevelClear();
     }
 

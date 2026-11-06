@@ -40,7 +40,7 @@ public class AdsManagerScript : MonoBehaviour
         
         // Load the initial ad
         LoadInterstitial();      
-        //ShowInterstitial();
+        ShowInterstitial();
     }
     
     public void LoadInterstitial()
