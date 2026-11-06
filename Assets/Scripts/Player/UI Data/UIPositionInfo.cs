@@ -22,27 +22,28 @@ public class UIPositionInfo : MonoBehaviour
     private void Update()
     {
         UpdatePlayerInfo();
-        UpdateScore();
+        //UpdateScore();
     }
 
     private void UpdatePlayerInfo()
     {
         if (playerMovement != null && positionData != null)
         {
-            Vector3 playerPosition = playerMovement.GetCurrentPosition();
-            positionData.text = $"<color=yellow>Player Position: X: {playerPosition.x:F2}, Y: {playerPosition.y:F2}, Z: {playerPosition.z:F2}</color>\n";
+            // Clear and set the text fresh every frame using '=' instead of '+='
+            string infoText = "";
 
             Vector3 playerVelocity = playerMovement.GetCurrentVelocity();
-            positionData.text += $"<color=green>Player Velocity: X: {playerVelocity.x:F2}, Y: {playerVelocity.y:F2}, Z: {playerVelocity.z:F2}</color>\n";
-
-            Vector3 playerAcceleration = playerMovement.GetTotalAcceleration();
-            positionData.text += $"<color=red>Player Acceleration: X: {playerAcceleration.x:F2}, Y: {playerAcceleration.y:F2}, Z: {playerAcceleration.z:F2}</color>\n";
-
             float playerSpeed = playerVelocity.magnitude;
-            positionData.text += $"<color=white>Player Speed: {playerSpeed:F2}</color>\n";
+            infoText += $"<color=white>Player Speed: {playerSpeed:F2}</color>\n";
 
-            bool isGrounded = playerMovement.GetGroundedStatus();
-            positionData.text += $"<color=white>Player Grounded: {isGrounded}</color>\n";
+            if (playerHealth != null)
+            {
+                float currentScore = playerHealth.GetCurrentScore();
+                infoText += $"<color=yellow>Current Score: {currentScore:F2}</color>\n";
+            }
+
+            // Assign the assembled text all at once
+            positionData.text = infoText;
         }
     }
 

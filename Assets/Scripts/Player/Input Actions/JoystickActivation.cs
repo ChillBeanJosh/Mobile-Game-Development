@@ -7,6 +7,7 @@ public class JoystickActivation : MonoBehaviour
     [Header("References: ")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private OnScreenStick JoystickControl;
+    [SerializeField] private OnScreenButton Impulse;
     [SerializeField] private Image JoystickImage;
 
     [Header("Settings: ")]
@@ -19,6 +20,8 @@ public class JoystickActivation : MonoBehaviour
 
         if (currentSpeed > 0f)
         {
+            Impulse.gameObject.SetActive(false);
+
             //Increment Fade Timer:
             currentFadeTime += Time.deltaTime;
 
@@ -30,6 +33,7 @@ public class JoystickActivation : MonoBehaviour
         }
         else
         {
+            Impulse.gameObject.SetActive(true);
             JoystickControl.gameObject.SetActive(true);
             JoystickImage.enabled = true;
         }
