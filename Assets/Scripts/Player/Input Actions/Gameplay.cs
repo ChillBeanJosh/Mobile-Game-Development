@@ -189,8 +189,8 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a62d70ab-5193-4d3d-9740-21e1724cda28"",
-                    ""path"": ""<Pointer>/delta"",
+                    ""id"": ""cfa8276a-2c91-49bd-90dd-72e2b3e2b2e5"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -213,6 +213,17 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                     ""name"": """",
                     ""id"": ""33b389fd-cff2-41cb-83ac-ff7bad31e98f"",
                     ""path"": ""<Touchscreen>/touch*/Press"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Impulse"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c3e66cc5-d441-41f3-8986-6b24a93c949a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
