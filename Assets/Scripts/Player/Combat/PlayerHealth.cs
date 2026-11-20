@@ -6,18 +6,18 @@ public class PlayerHealth : MonoBehaviour
     [Header("References: ")]
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private PlayerMovement playerMovement;
-    
-    [Header("Score Settings: ")]
+
+    [Header("Level Progression:")]
+    [SerializeField, Min(1)] private int currentLevelNumber = 1;
     [SerializeField] private float speedLevelClearThreshold = 1000f;
+    private bool hasEndedRun = false;
     [Space]
     [SerializeField] private float currentScore = 0f;
-    [SerializeField] private float scoreMultiplier = 0.1f;
-
-    private const string MoneySaveKey = "TotalMoney";
     private float maxSpeed = 0f;
 
     private void Update()
     {
+        if (hasEndedRun) return;
         float currentSpeed = playerMovement.GetCurrentVelocity().magnitude;
         bool movementHasBegun = playerMovement.GetHasAchievedSpeed();
 
@@ -25,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
         if (movementHasBegun && currentSpeed > 0f)
         {
             //Score Trigger: Takes current speed over time, multiplies it by a score multiplier, and adds it to the current score.
-            currentScore += Mathf.Floor(currentSpeed * scoreMultiplier) * Time.deltaTime;
+            currentScore += currentSpeed * (1 + StatusUpgrade.Instance.GetUpgradedScoreMultiplier()) * Time.deltaTime;
 
             //Store Trigger: Keeps track of the highest speed achieved during the run for display on the score output screen.
             if (currentSpeed > maxSpeed)
@@ -37,28 +37,32 @@ public class PlayerHealth : MonoBehaviour
         //Death Trigger
         if (currentSpeed <= 0f && movementHasBegun)
         {
+            hasEndedRun = true;
             SaveEarnings();
             OnDie();
+            return;
         }
 
         //Level Clear Trigger
         if (currentSpeed >= speedLevelClearThreshold)
         {
+            hasEndedRun = true;
             SaveEarnings();
             OnClear();
+            return;
         }
     }
 
     private void SaveEarnings()
     {
         //Load existing total money from PlayerPrefs:
-        float existingMoney = PlayerPrefs.GetFloat(MoneySaveKey, 0f);
+        float existingMoney = PlayerPrefs.GetFloat(StatusUpgrade.MoneySaveKey, 0f);
 
         //Add current score to the existing total money:
         float newTotalMoney = existingMoney + currentScore;
 
         //Store and save the new total money back into PlayerPrefs:
-        PlayerPrefs.SetFloat(MoneySaveKey, newTotalMoney);
+        PlayerPrefs.SetFloat(StatusUpgrade.MoneySaveKey, newTotalMoney);
         PlayerPrefs.Save(); 
     }
 
@@ -84,8 +88,9 @@ public class PlayerHealth : MonoBehaviour
     private void OnClear()
     {
         SaveRunData();
+        sceneManager.Instance.CompleteLevel(currentLevelNumber);
         //playerInput.ToggleScreenLock();
-        sceneManager.Instance.LoadLevelClear();
+        //sceneManager.Instance.LoadLevelClear();
     }
 
     public float GetCurrentScore() => currentScore;

@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &248920350 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7039952373890221341, guid: e35d3009093594a67a5626804788c1c2, type: 3}
+  m_PrefabInstance: {fileID: 1619798574}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &265936262 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2458813998421057695, guid: 1d311f16529d3004e9a240a134863f4c, type: 3}
@@ -1602,19 +1607,44 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7039952373890221341, guid: e35d3009093594a67a5626804788c1c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1619798578}
   m_SourcePrefab: {fileID: 100100000, guid: e35d3009093594a67a5626804788c1c2, type: 3}
 --- !u!114 &1619798575 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8230797975234614673, guid: e35d3009093594a67a5626804788c1c2, type: 3}
   m_PrefabInstance: {fileID: 1619798574}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 248920350}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69c432f4ed1ee4333be454478f542b3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1619798578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 248920350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 625d59a0e2d92bd43bc98a181e882c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseUpgradeCost: 100
+  upgradeCostMultiplier: 1.5
+  maximumUpgrades: 10
+  fadeDuration_IncrementValue: 0
+  moveAcceleration_IncrementValue: 0
+  dragCoefficient_DecrementValue: 0
+  parryDuration_IncrementValue: 0
+  parryMovespeedIncreaseFactor_IncrementValue: 0
+  parryMoveSpeedReductionFactor_DecrementValue: 0
+  scoreMultiplier_IncrementValue: 0
 --- !u!1001 &1622934460
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2144,7 +2174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4207194759429146263, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: parryDurationExtension
-      value: 0.5
+      value: 0.75
       objectReference: {fileID: 0}
     - target: {fileID: 4241106728533385010, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: m_IsActive
@@ -2194,10 +2224,18 @@ PrefabInstance:
       propertyPath: Impulse
       value: 
       objectReference: {fileID: 1323376589}
+    - target: {fileID: 6145941911125444474, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: fadeDuration
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6462891420782089681, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1619798575}
+    - target: {fileID: 6640613546884235431, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: upgrader
+      value: 
+      objectReference: {fileID: 1619798578}
     - target: {fileID: 6640613546884235431, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: speedLevelClearThreshold
       value: 1000
@@ -2235,9 +2273,17 @@ PrefabInstance:
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 8047411933551844768, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: upgrader
+      value: 
+      objectReference: {fileID: 1619798578}
+    - target: {fileID: 8047411933551844768, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: cameraTarget
       value: 
       objectReference: {fileID: 2010976918}
+    - target: {fileID: 8047411933551844768, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: dragCoefficient
+      value: 2.1
+      objectReference: {fileID: 0}
     - target: {fileID: 8047411933551844768, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: boxSpringConstant
       value: 4500
@@ -2246,6 +2292,10 @@ PrefabInstance:
       propertyPath: wideZoomCameraTarget
       value: 
       objectReference: {fileID: 795889130}
+    - target: {fileID: 8970093006386432830, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: upgrade
+      value: 
+      objectReference: {fileID: 1619798578}
     - target: {fileID: 8970093006386432830, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: moveAcceleration
       value: 100

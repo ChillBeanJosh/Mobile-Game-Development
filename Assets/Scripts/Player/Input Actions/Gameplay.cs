@@ -118,15 +118,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Attack"",
-                    ""type"": ""Button"",
-                    ""id"": ""f70181b1-32fc-40ec-96b9-392fd84729ad"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -209,17 +200,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""af846be2-4c74-4cc3-911d-5276216d5ab5"",
-                    ""path"": ""<Touchscreen>/delta"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""52e3ef52-7450-453e-99de-597098ae6a33"",
                     ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
@@ -239,17 +219,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
                     ""action"": ""Impulse"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""ec47215a-4f92-4a68-86fa-bb12eefef8ac"",
-                    ""path"": """",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Attack"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -261,7 +230,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
         m_Player_Impulse = m_Player.FindAction("Impulse", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
     }
 
     ~@Gameplay()
@@ -345,7 +313,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
     private readonly InputAction m_Player_Impulse;
-    private readonly InputAction m_Player_Attack;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -369,10 +336,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Impulse".
         /// </summary>
         public InputAction @Impulse => m_Wrapper.m_Player_Impulse;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Attack".
-        /// </summary>
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -408,9 +371,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
             @Impulse.started += instance.OnImpulse;
             @Impulse.performed += instance.OnImpulse;
             @Impulse.canceled += instance.OnImpulse;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
         }
 
         /// <summary>
@@ -431,9 +391,6 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
             @Impulse.started -= instance.OnImpulse;
             @Impulse.performed -= instance.OnImpulse;
             @Impulse.canceled -= instance.OnImpulse;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
         }
 
         /// <summary>
@@ -495,12 +452,5 @@ public partial class @Gameplay: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnImpulse(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Attack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnAttack(InputAction.CallbackContext context);
     }
 }

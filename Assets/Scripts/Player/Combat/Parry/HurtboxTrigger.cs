@@ -39,7 +39,7 @@ public class HurtboxTrigger : MonoBehaviour
     private void ReduceSpeed()
     {
         Vector3 currentVel = playerMovement.GetCurrentVelocity();
-        Vector3 velocityLoss = -currentVel * movementReductionFactor;
+        Vector3 velocityLoss = -currentVel * (1 - StatusUpgrade.Instance.GetUpgradedParrySpeedDecreaseFactor());
         playerMovement.AddImpulse(velocityLoss);
     }
 }

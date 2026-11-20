@@ -20,7 +20,13 @@ public class LevelSelectionOpenManager : MonoBehaviour
 
     public void OnClickClearPlayerPrefs()
     {
-        PlayerPrefs.DeleteAll();
-        PlayerPrefs.Save();
+        if (StatusUpgrade.Instance != null)
+        {
+            StatusUpgrade.Instance.ResetAllProgress();
+        }
+        else
+        {
+            Debug.LogError("StatusUpgrade instance not found!");
+        }
     }
 }

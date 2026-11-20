@@ -32,15 +32,6 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
-                },
-                {
-                    "name": "Attack",
-                    "type": "Button",
-                    "id": "f70181b1-32fc-40ec-96b9-392fd84729ad",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -123,17 +114,6 @@
                 },
                 {
                     "name": "",
-                    "id": "af846be2-4c74-4cc3-911d-5276216d5ab5",
-                    "path": "<Touchscreen>/delta",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Look",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "52e3ef52-7450-453e-99de-597098ae6a33",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -151,17 +131,6 @@
                     "processors": "",
                     "groups": "",
                     "action": "Impulse",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ec47215a-4f92-4a68-86fa-bb12eefef8ac",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

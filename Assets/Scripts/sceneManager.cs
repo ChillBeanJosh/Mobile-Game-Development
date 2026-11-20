@@ -1,10 +1,10 @@
-using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class sceneManager : MonoBehaviour
 {
     public static sceneManager Instance;
+    private const string UnlockedLevelsKey = "UnlockedLevels";
 
     private void Awake()
     {
@@ -69,5 +69,32 @@ public class sceneManager : MonoBehaviour
     public void RestartScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void CompleteLevel(int completedLevelNumber)
+    {
+        int currentlyUnlocked = PlayerPrefs.GetInt(UnlockedLevelsKey, 1);
+
+        // Prevent completing a level that hasn't been unlocked.
+        if (completedLevelNumber > currentlyUnlocked)
+        {
+            Debug.LogWarning("Attempted to complete a locked level.");
+        }
+        else
+        {
+            // Calculate the next level to unlock.
+            int nextLevel = completedLevelNumber + 1;
+
+            // Only update if this completion unlocks something new.
+            if (nextLevel > currentlyUnlocked)
+            {
+                PlayerPrefs.SetInt(UnlockedLevelsKey, nextLevel);
+                PlayerPrefs.Save();
+
+                Debug.Log($"Level {nextLevel} Unlocked!");
+            }
+        }
+
+        LoadLevelClear();
     }
 }

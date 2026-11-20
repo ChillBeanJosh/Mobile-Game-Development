@@ -25,7 +25,13 @@ public class JoystickActivation : MonoBehaviour
             //Increment Fade Timer:
             currentFadeTime += Time.deltaTime;
 
-            if (currentFadeTime >= fadeDuration)
+
+            float upgradedFadeDuration = StatusUpgrade.Instance != null
+                ? StatusUpgrade.Instance.GetUpgradedFadeDuration()
+                : 0f;
+
+            float totalFadeDuration = fadeDuration + upgradedFadeDuration;
+            if (currentFadeTime >= totalFadeDuration)
             {
                 JoystickControl.gameObject.SetActive(false);
                 JoystickImage.enabled = false;

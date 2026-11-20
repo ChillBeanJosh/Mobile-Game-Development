@@ -26,7 +26,7 @@ public class ParryHitboxTrigger : MonoBehaviour
                 PlayParticleEffect();
                 IncreaseSpeed();
                 playerParry.SetSuccessfulParry(true);
-                playerParry.ExtendParryDuration(parryDurationExtension);
+                playerParry.ExtendParryDuration(StatusUpgrade.Instance.GetUpgradedParryDuration());
             }
         }
     }
@@ -47,7 +47,7 @@ public class ParryHitboxTrigger : MonoBehaviour
     private void IncreaseSpeed()
     {
         Vector3 currentVel = playerMovement.GetCurrentVelocity();
-        Vector3 velocityGain = currentVel * movementIncreaseFactor;
+        Vector3 velocityGain = currentVel * (1 + StatusUpgrade.Instance.GetUpgradedParrySpeedIncreaseFactor());
         playerMovement.AddImpulse(velocityGain);
     }
 }

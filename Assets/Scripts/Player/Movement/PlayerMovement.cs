@@ -201,7 +201,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Resisting Force:
-        Vector3 dragAcceleration = -currentVelocity * dragCoefficient;
+        Vector3 dragAcceleration = -currentVelocity * (dragCoefficient - StatusUpgrade.Instance.GetUpgradedDrag());
         AddAcceleration(dragAcceleration);
 
         // Gravitational Force & Ground Management:

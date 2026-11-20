@@ -96,7 +96,7 @@ public class PlayerInput : MonoBehaviour
 
     void FixedUpdate()
     {
-        _movementLogic.GatherIntrinsicAccelerations(moveAcceleration);
+        _movementLogic.GatherIntrinsicAccelerations(moveAcceleration + StatusUpgrade.Instance.GetUpgradedMove());
         _movementLogic.GatherIntrinsicPhysics();
         _movementLogic.ApplyMovement();
         _parryLogic.ReadParry();

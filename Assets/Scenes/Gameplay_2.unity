@@ -2207,6 +2207,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6640613546884235431, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
+      propertyPath: currentLevelNumber
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6640613546884235431, guid: 89e6bdaf74f9cbc44a81e5dcc6aae47d, type: 3}
       propertyPath: speedLevelClearThreshold
       value: 100000
       objectReference: {fileID: 0}
